@@ -1,0 +1,330 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ffc3a0 50%, #ff6b9d 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 10s ease infinite;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.music-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ff6b9d;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.music-toggle:hover {
+    background: #ff6b9d;
+    color: white;
+    transform: scale(1.05);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.card-selection,
+.form-section,
+.card-preview-section {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card-preview-section {
+    grid-column: 1 / -1;
+}
+
+h2 {
+    color: #ff6b9d;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+/* Card Options */
+.card-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.card-option {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.card-option:hover {
+    transform: translateY(-5px);
+}
+
+.card-option.selected .preview-card {
+    border: 3px solid #ff6b9d;
+    box-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
+}
+
+.preview-card {
+    background: linear-gradient(135deg, #ffe0e9 0%, #fff5f7 100%);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.preview-card h3 {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* Card Animations */
+.card-hearts .hearts-animation {
+    position: relative;
+    height: 60px;
+}
+
+.heart {
+    position: absolute;
+    font-size: 2rem;
+    animation: floatHeart 3s ease-in-out infinite;
+}
+
+.heart:nth-child(1) {
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.heart:nth-child(2) {
+    left: 50%;
+    animation-delay: 1s;
+}
+
+.heart:nth-child(3) {
+    left: 80%;
+    animation-delay: 2s;
+}
+
+@keyframes floatHeart {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { transform: translateY(-20px) scale(1.2); opacity: 0.8; }
+}
+
+.card-roses .rose {
+    font-size: 3rem;
+    animation: bloom 2s ease-in-out infinite;
+}
+
+@keyframes bloom {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.3) rotate(10deg); }
+}
+
+.card-cupid .cupid {
+    font-size: 3rem;
+    animation: shoot 2s ease-in-out infinite;
+}
+
+@keyframes shoot {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    50% { transform: translateX(20px) rotate(45deg); }
+}
+
+.card-love .love-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff6b9d, #c94b4b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: bold;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ffe0e9;
+    border-radius: 10px;
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #ff6b9d;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.send-button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #ff6b9d 0%, #c94b4b 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.send-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
+}
+
+.send-button:active {
+    transform: translateY(0);
+}
+
+/* Card Preview */
+.card-preview {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 60px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-animation {
+    margin-bottom: 20px;
+    min-height: 80px;
+}
+
+.card-content h2 {
+    color: #ff6b9d;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+}
+
+.card-content p {
+    color: #666;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.signature {
+    font-style: italic;
+    color: #999;
+    font-size: 1rem;
+    margin-top: 30px;
+}
+
+.signature span {
+    color: #ff6b9d;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .card-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .card-options {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 40px 20px;
+    }
+}
