@@ -102,14 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Get form values
         const senderName = document.getElementById('senderName').value;
-        const senderEmail = document.getElementById('senderEmail').value;
         const recipientEmail = document.getElementById('recipientEmail').value;
         const message = document.getElementById('message').value;
 
         // Prepare email data
         const emailData = {
             senderName,
-            senderEmail,
             recipientEmail,
             message,
             cardType: currentCard
