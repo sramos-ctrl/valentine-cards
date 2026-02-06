@@ -17,7 +17,6 @@ A beautiful, interactive web application for creating and sending personalized V
 2. Choose your favorite card design
 3. Fill in the form fields:
    - Your Name
-   - Your Email Address
    - Recipient's Email Address
    - Your Valentine's Message
 4. Click "Send Valentine's Card"
@@ -32,35 +31,39 @@ A beautiful, interactive web application for creating and sending personalized V
 
 ### Email Integration
 
-To enable actual email sending, you need to integrate an email service. Here are your options:
+This application uses EmailJS to send Valentine's Day cards directly from the browser. **Email functionality is already configured and ready to use.**
 
-#### Option 1: EmailJS (Recommended for beginners)
+#### Current Configuration
 
-1. Sign up at [EmailJS.com](https://www.emailjs.com/)
-2. Create an email service and template
-3. Add the EmailJS SDK to your HTML:
-   ```html
-   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-   ```
-4. Update `script.js` with your EmailJS credentials:
-   ```javascript
-   emailjs.init("YOUR_PUBLIC_KEY");
-   await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', emailData);
-   ```
+The EmailJS credentials are configured in `script.js` (lines 18-23):
 
-#### Option 2: Backend API with SendGrid/Mailgun
+```javascript
+const EMAIL_CONFIG = {
+    PUBLIC_KEY: 'UPXHjN5ouONvt76Y3',
+    SERVICE_ID: 'service_lv28tzu',
+    TEMPLATE_ID: 'template_os7peau'
+};
+```
 
-1. Create a backend server (Node.js, Python, PHP, etc.)
-2. Set up SendGrid or Mailgun account
-3. Create an API endpoint to handle email sending
-4. Update the form submission in `script.js` to call your API
+#### EmailJS Template Parameters
 
-#### Option 3: Custom Server with Nodemailer
+The EmailJS template (`template_os7peau`) must be configured in your EmailJS dashboard with these parameters:
 
-1. Set up a Node.js backend with Express
-2. Install nodemailer: `npm install nodemailer`
-3. Create an email sending endpoint
-4. Update the form to POST to your server
+- `{{senderName}}` - The sender's name (displayed as "From: [name]")
+- `{{recipientEmail}}` - The recipient's email address (where the card is sent)
+- `{{message}}` - The Valentine's message content
+- `{{cardType}}` - The selected card design (hearts, roses, cupid, or love)
+
+**Important**: The "from" email address shown to recipients is determined by the email account connected to your EmailJS service, not by the code. Make sure your EmailJS service is connected to the email address you want recipients to see.
+
+#### Verification Steps
+
+To verify the email configuration is working correctly:
+
+1. Open `index.html` in your web browser
+2. Fill out the form and send a test card to your own email address
+3. Check that the email arrives from the correct email address
+4. Verify that all template parameters (sender name, message, card type) are displaying correctly in the received email
 
 ## Project Structure
 

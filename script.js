@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // EmailJS Configuration
     const EMAIL_CONFIG = {
-        PUBLIC_KEY: 'fqo7Ba6tcdiLk-wjG',
-        SERVICE_ID: 'service_ot4rwun',
-        TEMPLATE_ID: 'template_evpdj5b'
+        PUBLIC_KEY: 'UPXHjN5ouONvt76Y3',
+        SERVICE_ID: 'service_lv28tzu',
+        TEMPLATE_ID: 'template_os7peau'
     };
 
     // Initialize EmailJS
@@ -105,12 +105,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const recipientEmail = document.getElementById('recipientEmail').value;
         const message = document.getElementById('message').value;
 
+        // Map card types to emojis for email display
+        const cardTypeEmojis = {
+            hearts: '❤️ 💕 💖',
+            roses: '🌹',
+            cupid: '💘',
+            love: '💌'
+        };
+
         // Prepare email data
         const emailData = {
             senderName,
             recipientEmail,
             message,
-            cardType: currentCard
+            cardType: cardTypeEmojis[currentCard] || currentCard
         };
 
         console.log('Sending card with data:', emailData);
